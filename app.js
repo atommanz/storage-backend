@@ -13,15 +13,6 @@ import mongoose from 'mongoose'
 
 var app = express();
 
-// // mongoose.connect(`mongodb://192.168.250.125:27017/pos-utils`)
-// console.log(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
-// mongoose.connect(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
-
-// firebase.initializeApp({
-//   apiKey: '### FIREBASE API KEY ###',
-//   authDomain: '### FIREBASE AUTH DOMAIN ###',
-//   projectId: '### CLOUD FIRESTORE PROJECT ID ###'
-// });
 const firebaseConfig = {
   apiKey: "AIzaSyDouD51Vy2XOFsvU6YaVRsGMRdGvwirH4A",
   authDomain: "storage-app-a1a12.firebaseapp.com",
@@ -33,16 +24,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-
-// Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
-db.collection("storage").get().then((querySnapshot) => {
-  querySnapshot.forEach((doc) => {
-    console.log(doc.type)
-      // console.log(`${doc.id} => ${doc.data()}`);
-  });
-});
-
 var docRef = db.collection("storage").doc("test");
 
 docRef.get().then(function(doc) {
@@ -54,10 +36,7 @@ docRef.get().then(function(doc) {
 }).catch(function(error) {
     console.log("Error getting document:", error);
 });
-// var userOneDocumentRef = db.doc('storage/test');
-// var storageCollection = db.collection('storage');
-// console.log(userOneDocumentRef)
-// view engine setup
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
