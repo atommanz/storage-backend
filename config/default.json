@@ -1,0 +1,119 @@
+{
+    "db": {
+        "username": "TPWEBUser",
+        "password": "tpwe13u$er",
+        "database": "TPCenTralDB"
+    },
+    "database": {
+        "host": "192.168.250.125",
+        "port": "27017",
+        "name": "pos-utils"
+    },
+    "host": {
+        "dev": {
+            "servername": "10.10.5.57"
+        },
+        "0000": {
+            "servername": "10.10.2.23"
+        },
+        "1000": {
+            "servername": "MDCTPEVT"
+        },
+        "1407": {
+            "servername": "MDCTPIFI"
+        },
+        "1440": {
+            "servername": "MDCTPDMK"
+        },
+        "1202": {
+            "servername": "IRBTPSERVER"
+        },
+        "1203": {
+            "servername": "IRSTPSERVER"
+        },
+        "1206": {
+            "servername": "IPKTPSERVER"
+        },
+        "1207": {
+            "servername": "IHHTPSERVER"
+        },
+        "1208": {
+            "servername": "IEMTPSERVER"
+        },
+        "1210": {
+            "servername": "IBYTPSERVER"
+        },
+        "1211": {
+            "servername": "IUNTPSERVER"
+        },
+        "1213": {
+            "servername": "ICMTPSERVER"
+        },
+        "1214": {
+            "servername": "IPLTPSERVER"
+        },
+        "1215": {
+            "servername": "IUDTPSERVER"
+        },
+        "1216": {
+            "servername": "IKKTPSERVER"
+        },
+        "1217": {
+            "servername": "ICHTPSERVER"
+        },
+        "1219": {
+            "servername": "INMTPSERVER"
+        },
+        "1221": {
+            "servername": "IBNTPSERVER"
+        },
+        "1222": {
+            "servername": "IR2TPSERVER"
+        },
+        "1223": {
+            "servername": "IRPTPSERVER"
+        },
+        "1224": {
+            "servername": "IKNTPSERVER"
+        },
+        "1225": {
+            "servername": "IPYTPSERVER"
+        },
+        "1227": {
+            "servername": "INSTPSERVER"
+        },
+        "1229": {
+            "servername": "IMCTPSERVER"
+        },
+        "1230": {
+            "servername": "IHYTPSERVER"
+        },
+        "1231": {
+            "servername": "ISNTPSERVER"
+        },
+        "1232": {
+            "servername": "IRYTPSERVER"
+        },
+        "1234": {
+            "servername": "INRTPSERVER"
+        },
+        "1235": {
+            "servername": "ICNTPSERVER"
+        },
+        "1236": {
+            "servername": "INTTPSERVER"
+        },
+        "1238": {
+            "servername": "ICSTPSERVER"
+        },
+        "1242": {
+            "servername": "ISRTPSERVER"
+        },
+        "1246": {
+            "servername": "IBSTPSERVER"
+        },
+        "1248": {
+            "servername": "ICPTPSERVER"
+        }
+    }
+}

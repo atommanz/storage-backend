@@ -1,0 +1,42 @@
+{
+  "name": "pos-utils-backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "activedirectory": "^0.7.2",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "config": "^3.0.1",
+    "convert-excel-to-json": "^1.6.0",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-fileupload": "^1.1.1-alpha.1",
+    "fs": "0.0.1-security",
+    "http-errors": "~1.6.2",
+    "jsonexport": "^2.4.1",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.13",
+    "morgan": "~1.9.0",
+    "mssql": "^5.0.0-alpha.1",
+    "node-fetch": "^2.2.1",
+    "node-schedule": "^1.3.0",
+    "path": "^0.12.7",
+    "pug": "2.0.0-beta11",
+    "samba-client": "^2.1.0",
+    "sequelize": "^4.42.0",
+    "smb2": "^0.2.11",
+    "sql": "^0.78.0",
+    "xls-to-json": "^0.5.1"
+  }
+}
