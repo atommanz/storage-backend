@@ -1,12 +1,7 @@
 import express from 'express'
-import user from './user'
-import upload from './upload'
-import staffData from './staffData'
+import product from './product'
 
 const router = express.Router()
-
-router.use('/user', user)
-router.use('/upload', upload)
-router.use('/staffData', staffData)
+router.use('/product', product)
 
 export default router

@@ -11,9 +11,9 @@ import mongoose from 'mongoose'
 
 var app = express();
 
-// mongoose.connect(`mongodb://192.168.250.125:27017/pos-utils`)
-console.log(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
-mongoose.connect(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
+// // mongoose.connect(`mongodb://192.168.250.125:27017/pos-utils`)
+// console.log(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
+// mongoose.connect(`mongodb://${config.get('database.host')}:${config.get('database.port')}/${config.get('database.name')}`)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
