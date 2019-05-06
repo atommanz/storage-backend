@@ -1,7 +1,6 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import firebase from 'firebase'
-import User from '../../services/user'
 
 const router = express.Router()
 
@@ -30,23 +29,24 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// GET product by doc
-router.get('/', function (req, res, next) {
-    console.log('coming a')
-    var db = firebase.firestore()
-    var docRef = db.collection("storage").doc("test")
+// GET product by id
+router.get('/:productId', async (req, res, next) => {
+    try {
+        var db = firebase.firestore()
+        var docRef = db.collection("storage").doc(req.params.productId)
 
-    docRef.get().then(function (doc) {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-        } else {
-            console.log("No such document!");
+        const doc = await docRef.get()
+        if (doc.data()) {
+            return res.status(200).send({ success: true, data: doc.data() })
         }
-    }).catch(function (error) {
-        console.log("Error getting document:", error);
-    });
-    return res.status(200).send({ success: true, data: 'users' });
-
+        else {
+            return res.status(404).send({ success: true, data: 'data not found' })
+        }
+    }
+    catch (e) {
+        console.log(e)
+        return res.stataus(500).send({ success: false })
+    }
 })
 
 router.post('/login', async (req, res, next) => {
