@@ -9,11 +9,20 @@ const router = express.Router()
 router.get('/', async (req, res, next) => {
     try {
         const db = firebase.firestore()
-        const collection = await db.collection('storage').get()
+        let collection;
+        const listOut = []
+        if (req.query.category) { collection = await db.collection('storage').where("category", "==", req.query.category).get() }
+        else { collection = await db.collection('storage').get() }
         collection.docs.map(doc => { console.log(doc.id, " => ", doc.data()) })
-        const listProduct = collection.docs.map(val => val.data())
+        const listProduct = collection.docs.map(
+            (val) => {
+                const objOut = val.data()
+                objOut._id = val.id
+                listOut.push(objOut)
+            }
+        )
         await Promise.all(listProduct)
-        return res.status(200).send({ success: true, data: listProduct })
+        return res.status(200).send({ success: true, data: listOut })
     }
     catch (e) {
         console.log(e)
