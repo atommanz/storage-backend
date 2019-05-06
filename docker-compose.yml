@@ -2,8 +2,8 @@ version: "3"
 services:
   node:
     build: .
-    image: pos-utils-backend:latest
-    hostname: pos-utils
+    image: storage-app:latest
+    hostname: storage-app
     user: "node"
     working_dir: /usr/src/app
     environment:

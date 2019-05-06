@@ -1,5 +1,5 @@
 FROM node:carbon
-MAINTAINER Potsawat Chaliewkumnuan <potsawat.ch@indexlivingmall.com>
+MAINTAINER Potsawat Chaliewkumnuan 
 
 # Create app directory
 WORKDIR /usr/src/app
