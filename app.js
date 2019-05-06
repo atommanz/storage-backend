@@ -9,8 +9,6 @@ import cors from 'cors'
 import firebase from 'firebase'
 import apiRouter from './routes/api'
 
-import mongoose from 'mongoose'
-
 var app = express();
 
 const firebaseConfig = {
@@ -24,18 +22,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
-var docRef = db.collection("storage").doc("test");
 
-docRef.get().then(function(doc) {
-    if (doc.exists) {
-        console.log("Document data:", doc.data());
-    } else {
-        console.log("No such document!");
-    }
-}).catch(function(error) {
-    console.log("Error getting document:", error);
-});
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
