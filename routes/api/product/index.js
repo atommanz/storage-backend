@@ -8,7 +8,7 @@ const router = express.Router()
 // GET list prodcut
 router.get('/', async (req, res, next) => {
     try {
-        const listProduct = await productService.findAll(req.query.category)
+        const listProduct = await productService.findAll(req.query.category,req.query.status)
         return res.status(200).send({ success: true, data: listProduct })
     }
     catch (e) {
@@ -31,18 +31,18 @@ router.get('/:productId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        var db = firebase.firestore()
-        db.collection("storage").add({
-            name: "Tokyo",
-            category: "Japan"
-        })
-            .then(function (docRef) {
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch(function (error) {
-                console.error("Error adding document: ", error);
-            });
-        return res.send({ success: true, data: '' })
+        const prodcutId = await productService.create(req.body)
+        return res.send({ success: true, data: prodcutId })
+    } catch (e) {
+        console.log(e)
+        return res.status(500).send({ success: false })
+    }
+})
+
+router.put('/checkout', async (req, res, next) => {
+    try {
+        const ddd = await productService.checkout('dH3RxhGOJwh4Jvu5SBMw')
+        return res.send({ success: true, data: ddd })
     } catch (e) {
         console.log(e)
         return res.status(500).send({ success: false })
