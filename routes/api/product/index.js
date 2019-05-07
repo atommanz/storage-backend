@@ -44,12 +44,17 @@ router.post('/', async (req, res, next) => {
 
 router.put('/checkout', async (req, res, next) => {
     try {
-        const ddd = await productService.checkout(
-            'ogd7qaNNxIU5psen6x88',
-            moment().format("DD/MM/YYYY HH:mm:ss"),
-            '1200'
+        const dataCheckout = await productService.checkout(
+            req.body._id,
+            req.body.endDate,
+            req.body.totalPrice
         )
-        return res.send({ success: true, data: ddd })
+        // const dataCheckout = await productService.checkout(
+        //     'ogd7qaNNxIU5psen6x88',
+        //     moment().format("DD/MM/YYYY HH:mm:ss"),
+        //     '1200'
+        // )
+        return res.send({ success: true, data: dataCheckout })
     } catch (e) {
         console.log(e)
         return res.status(500).send({ success: false })
