@@ -49,12 +49,19 @@ const create = async (body) => {
     return docRef.id
 }
 
-const checkout = async (id, endDate) => {
+const checkout = async (id, endDate, totalPrice) => {
+    console.log(id, endDate)
     var db = firebase.firestore()
     var docRef = db.collection("storage").doc(id)
-
-    const doc = await docRef.get()
-
+    docRef.update({
+        endDate,
+        status: 'I',
+        totalPrice
+    })
+    // db.ref(`storage/${id}`).update({ endDate });
+    // db.ref(`-storage/-${id}/endDate`).set(endDate)
+    // const doc = await docRef.update({ endDate: "New trainer" });
+    const doc = await docRef.get();
     return doc.data()
 }
 

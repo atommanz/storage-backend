@@ -1,6 +1,7 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import firebase from 'firebase'
+import moment from 'moment'
 import productService from '../../services/product'
 
 const router = express.Router()
@@ -43,7 +44,11 @@ router.post('/', async (req, res, next) => {
 
 router.put('/checkout', async (req, res, next) => {
     try {
-        const ddd = await productService.checkout('dH3RxhGOJwh4Jvu5SBMw')
+        const ddd = await productService.checkout(
+            'ogd7qaNNxIU5psen6x88',
+            moment().format("DD/MM/YYYY HH:mm:ss"),
+            '1200'
+        )
         return res.send({ success: true, data: ddd })
     } catch (e) {
         console.log(e)
