@@ -77,7 +77,7 @@ const getPrice = async (body) => {
     else if (body.category === 'etc') {
         price = await getPriceEtc(body)
     }
-    return price
+    return price.toFixed(2)
 }
 
 const getPriceFood = async (body) => {
@@ -116,9 +116,10 @@ const getPriceClothes = async (body) => {
 
 const getPriceEtc = async (body) => {
     const diffDate = await findDiffDate(body.startDate, body.endDate)
-    console.log('diffDate', diffDate)
+
     let volume = Number(body.width) * Number(body.height) * Number(body.depth) //cm3
     volume = volume * Math.pow(10, -6) //m3
+    console.log('diffDate', diffDate, 'volume', volume)
     const totalPrice = volume * diffDate * 10
     return totalPrice
 }
