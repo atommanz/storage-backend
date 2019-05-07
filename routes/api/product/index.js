@@ -31,7 +31,9 @@ router.get('/:productId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        const prodcutId = await productService.create(req.body)
+        const body = req.body
+        body.status = 'A'
+        const prodcutId = await productService.create(body)
         return res.send({ success: true, data: prodcutId })
     } catch (e) {
         console.log(e)
@@ -49,17 +51,16 @@ router.put('/checkout', async (req, res, next) => {
     }
 })
 
-router.post('/verify', async (req, res, next) => {
+//  total price
+router.post('/price', async (req, res, next) => {
     try {
-        const outUser = await User.getUser(req.body.username)
-        // const dataSend = ''
-        if (!outUser[0]) {
-            return res.send({ success: false, data: outUser[0] })
-        }
-        return res.send({ success: true, data: outUser[0] })
-    } catch (e) {
+        const body = req.body
+        const totalPrice = await productService.getPrice(body)
+        return res.status(200).send({ success: true, data: totalPrice })
+    }
+    catch (e) {
         console.log(e)
-        return res.status(500).send({ success: false })
+        return res.stataus(500).send({ success: false })
     }
 })
 

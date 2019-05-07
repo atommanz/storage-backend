@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import moment from 'moment'
 
 const findAll = async (query, status) => {
     console.log(query, status)
@@ -26,7 +27,7 @@ const findAll = async (query, status) => {
         await Promise.all(promFilter)
         return promFilter
     }
-    else{
+    else {
         return listOut
     }
 }
@@ -57,11 +58,68 @@ const checkout = async (id, endDate) => {
     return doc.data()
 }
 
+const getPrice = async (body) => {
 
+    let price = 0
+    if (body.category === 'food') {
+        price = await getPriceFood(body)
+    }
+    if (body.category === 'clothes') {
+        price = await getPriceClothes(body)
+    }
+    return price
+}
+
+const getPriceFood = async (body) => {
+    const diffDate = await findDiffDate(body.startDate, body.endDate)
+    const volume = Number(body.width) * Number(body.height) * Number(body.depth)
+    let price = volume
+    let totalPrice = price
+    var i
+    for (i = 2; i <= diffDate; i++) {
+        price = price * 2
+        console.log(i, price)
+        totalPrice += price
+    }
+    console.log(totalPrice)
+    return totalPrice
+}
+
+const getPriceClothes = async (body) => {
+    const diffDate = await findDiffDate(body.startDate, body.endDate)
+    const volume = Number(body.width) * Number(body.height) * Number(body.depth)
+    if(body.weight){
+        const totalPrice =  Number(body.weight) * diffDate *20
+        return totalPrice
+    }
+    else{
+        //  D=m/v
+    }
+    // let price = volume
+    // let totalPrice = price
+    // var i
+    // for (i = 2; i <= diffDate; i++) {
+    //     price = price * 2
+    //     console.log(i, price)
+    //     totalPrice += price
+    // }
+    // console.log(totalPrice)
+    return true
+}
+
+const findDiffDate = async (inpStartDate, inpEndDate) => {
+
+    const startDate = moment(inpStartDate, "DD/MM/YYYY HH:mm:ss")
+    const endDate = moment(inpEndDate, "DD/MM/YYYY HH:mm:ss")
+    const diffSecond = endDate.diff(startDate, 'seconds')
+    const days = Math.ceil(Number(diffSecond) / (60 * 60 * 24))
+    return days
+}
 export default {
     findAll,
     findOne,
     create,
-    checkout
+    checkout,
+    getPrice
 }
 
