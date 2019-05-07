@@ -72,6 +72,7 @@ const getPrice = async (body) => {
 
 const getPriceFood = async (body) => {
     const diffDate = await findDiffDate(body.startDate, body.endDate)
+    console.log('diffDate', diffDate)
     const volume = Number(body.width) * Number(body.height) * Number(body.depth)
     let price = volume
     let totalPrice = price
@@ -87,24 +88,20 @@ const getPriceFood = async (body) => {
 
 const getPriceClothes = async (body) => {
     const diffDate = await findDiffDate(body.startDate, body.endDate)
-    const volume = Number(body.width) * Number(body.height) * Number(body.depth)
-    if(body.weight){
-        const totalPrice =  Number(body.weight) * diffDate *20
+    console.log('diffDate', diffDate)
+    let volume = Number(body.width) * Number(body.height) * Number(body.depth) //cm3
+    volume = volume * Math.pow(10, -6) //m3
+    if (body.weight) {
+        const totalPrice = Number(body.weight) * diffDate * 20
         return totalPrice
     }
-    else{
+    else {
         //  D=m/v
+        console.log('volume', volume)
+        const weight = 100 * volume
+        const totalPrice = Number(weight) * diffDate * 20
+        return totalPrice
     }
-    // let price = volume
-    // let totalPrice = price
-    // var i
-    // for (i = 2; i <= diffDate; i++) {
-    //     price = price * 2
-    //     console.log(i, price)
-    //     totalPrice += price
-    // }
-    // console.log(totalPrice)
-    return true
 }
 
 const findDiffDate = async (inpStartDate, inpEndDate) => {
