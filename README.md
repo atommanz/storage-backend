@@ -19,7 +19,7 @@ To get the Node server running locally:
 
 - `app.js` - The entry point to application. This file defines express server and Creates and initializes a Firebase. It also requires the routes that we'll be using in the application.
 - `routes/` - This folder contains the route definitions for API and services.
-- `routes/product` - This folder is route to create new product to storage, get list product in storage, get product detail in storage, checkout product in storage, get price in storage
+- `routes/product` - This folder is route to create new product to storage, get list product in storage, get product detail in storage, checkout product in storage, get price product is active in storage, get bussiness profits all product is checkout from storage
 
 ## Functional
 

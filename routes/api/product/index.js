@@ -58,12 +58,24 @@ router.put('/checkout', async (req, res, next) => {
     }
 })
 
-// get total price
+// get total price one product
 router.post('/price', async (req, res, next) => {
     try {
         const body = req.body
         const totalPrice = await productService.getPrice(body)
         return res.status(200).send({ success: true, data: totalPrice })
+    }
+    catch (e) {
+        console.log(e)
+        return res.stataus(500).send({ success: false })
+    }
+})
+
+// get bussiness profits
+router.get('/price/profits', async (req, res, next) => {
+    try {
+        const profits = await productService.getBussinessProfits()
+        return res.status(200).send({ success: true, data: profits })
     }
     catch (e) {
         console.log(e)

@@ -128,11 +128,28 @@ const findDiffDate = async (inpStartDate, inpEndDate) => {
     const days = Math.ceil(Number(diffSecond) / (60 * 60 * 24))
     return days
 }
+
+const getBussinessProfits = async () => {
+    const db = firebase.firestore()
+    let collection;
+    let profits = 0
+    collection = await db.collection('storage').where("status", "==", "I").get()
+    const listProduct = collection.docs.map(
+        (val) => {
+            profits += Number(val.data().totalPrice)
+        }
+    )
+
+    await Promise.all(listProduct)
+    return profits.toFixed(2)
+}
+
 export default {
     findAll,
     findOne,
     create,
     checkout,
-    getPrice
+    getPrice,
+    getBussinessProfits
 }
 
