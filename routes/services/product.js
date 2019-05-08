@@ -8,9 +8,6 @@ const findAll = async (query, status) => {
     const listOut = []
     if (query) { collection = await db.collection('storage').where("category", "==", query).get() }
     else { collection = await db.collection('storage').get() }
-    // collection.docs.map(doc => { 
-    //     console.log(doc.id, " => ", doc.data()) 
-    // })
     const listProduct = collection.docs.map(
         (val) => {
             const objOut = val.data()
@@ -31,6 +28,7 @@ const findAll = async (query, status) => {
         return listOut
     }
 }
+
 const findOne = async (id) => {
     var db = firebase.firestore()
     var docRef = db.collection("storage").doc(id)
@@ -43,6 +41,7 @@ const findOne = async (id) => {
         return {}
     }
 }
+
 const create = async (body) => {
     var db = firebase.firestore()
     const docRef = await db.collection("storage").add(body)
@@ -58,9 +57,6 @@ const checkout = async (id, endDate, totalPrice) => {
         status: 'I',
         totalPrice
     })
-    // db.ref(`storage/${id}`).update({ endDate });
-    // db.ref(`-storage/-${id}/endDate`).set(endDate)
-    // const doc = await docRef.update({ endDate: "New trainer" });
     const doc = await docRef.get();
     return doc.data()
 }
@@ -100,7 +96,7 @@ const getPriceClothes = async (body) => {
     const diffDate = await findDiffDate(body.startDate, body.endDate)
     console.log('diffDate', diffDate)
     let volume = Number(body.width) * Number(body.height) * Number(body.depth) //cm3
-    volume = volume * Math.pow(10, -6) //m3
+    volume = volume * Math.pow(10, -6) //convert unit cm3 to m3
     if (body.weight) {
         const totalPrice = Number(body.weight) * diffDate * 20
         return totalPrice
@@ -118,7 +114,7 @@ const getPriceEtc = async (body) => {
     const diffDate = await findDiffDate(body.startDate, body.endDate)
 
     let volume = Number(body.width) * Number(body.height) * Number(body.depth) //cm3
-    volume = volume * Math.pow(10, -6) //m3
+    volume = volume * Math.pow(10, -6) //convert unit cm3 to m3
     console.log('diffDate', diffDate, 'volume', volume)
     const totalPrice = volume * diffDate * 10
     return totalPrice

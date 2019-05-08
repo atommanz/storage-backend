@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// GET product by id
+// GET product detail by id
 router.get('/:productId', async (req, res, next) => {
     try {
         const product = await productService.findOne(req.params.productId)
@@ -30,6 +30,7 @@ router.get('/:productId', async (req, res, next) => {
     }
 })
 
+// create product
 router.post('/', async (req, res, next) => {
     try {
         const body = req.body
@@ -42,6 +43,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+// checkout product
 router.put('/checkout', async (req, res, next) => {
     try {
         const dataCheckout = await productService.checkout(
@@ -49,11 +51,6 @@ router.put('/checkout', async (req, res, next) => {
             req.body.endDate,
             req.body.totalPrice
         )
-        // const dataCheckout = await productService.checkout(
-        //     'ogd7qaNNxIU5psen6x88',
-        //     moment().format("DD/MM/YYYY HH:mm:ss"),
-        //     '1200'
-        // )
         return res.send({ success: true, data: dataCheckout })
     } catch (e) {
         console.log(e)
@@ -61,7 +58,7 @@ router.put('/checkout', async (req, res, next) => {
     }
 })
 
-//  total price
+// get total price
 router.post('/price', async (req, res, next) => {
     try {
         const body = req.body

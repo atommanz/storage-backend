@@ -1,5 +1,4 @@
 import createError from 'http-errors'
-import config from 'config'
 import express from 'express'
 import path from 'path'
 import fileUpload from 'express-fileupload'
