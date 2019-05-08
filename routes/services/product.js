@@ -134,14 +134,18 @@ const getBussinessProfits = async () => {
     let collection;
     let profits = 0
     collection = await db.collection('storage').where("status", "==", "I").get()
-    const listProduct = collection.docs.map(
-        (val) => {
-            profits += Number(val.data().totalPrice)
-        }
-    )
+    if (collection.docs.length > 0) {
+        const listProduct = collection.docs.map(
+            (val) => {
+                profits += Number(val.data().totalPrice)
+            }
+        )
 
-    await Promise.all(listProduct)
+        await Promise.all(listProduct)
+        return profits.toFixed(2)
+    }
     return profits.toFixed(2)
+
 }
 
 export default {
