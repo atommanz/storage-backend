@@ -11,13 +11,13 @@ import apiRouter from './routes/api'
 var app = express();
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDouD51Vy2XOFsvU6YaVRsGMRdGvwirH4A",
-  authDomain: "storage-app-a1a12.firebaseapp.com",
-  databaseURL: "https://storage-app-a1a12.firebaseio.com",
-  projectId: "storage-app-a1a12",
-  storageBucket: "storage-app-a1a12.appspot.com",
-  messagingSenderId: "313730066033",
-  appId: "1:313730066033:web:763c4950b2748d6b"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: "",
+  appId: ""
 };
 
 firebase.initializeApp(firebaseConfig);
